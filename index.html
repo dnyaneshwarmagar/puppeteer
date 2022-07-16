@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>puppeteer</title>
+    <style>
+        body {
+            background-color: black;
+            box-sizing: border-box;
+            color: skyblue;
+            text-align: center;
+        }
+
+        #puppeteer {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        #puppeteer>div {
+            width: 100%;
+            border: 2px solid skyblue;
+        }
+
+        h3,
+        H1 {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>GOOGLE DEVELOPER USING PUPPETEER</h1>
+    <div id="puppeteer"></div>
+
+</body>
+
+</html>
+<script>
+    const appendData = (data) => {
+        let main = document.getElementById("puppeteer")
+        data.map((el) => {
+            let div = document.createElement("div")
+
+            let title = document.createElement("p")
+            title.textContent = el.title
+
+            let company = document.createElement("h3")
+            company.textContent = el.company
+
+            let location = document.createElement("p")
+            location.textContent = el.location
+
+            let contact = document.createElement("p")
+            contact.textContent = el.contact
+
+            div.append(title, company, location, contact)
+            main.append(div)
+        })
+    }
+    const getData = async () => {
+        try {
+            let res = await fetch("http://localhost:8080/data")
+            let data = await res.json()
+            // console.log(data)
+            appendData(data)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    getData()
+</script>

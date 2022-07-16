@@ -1,0 +1,12 @@
+{
+  "name": "pupeeter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.1",
+    "mongoose": "^6.3.5",
+    "puppeteer": "^14.2.1",
+    "puppeteer-core": "^14.2.1"
+  }
+}
